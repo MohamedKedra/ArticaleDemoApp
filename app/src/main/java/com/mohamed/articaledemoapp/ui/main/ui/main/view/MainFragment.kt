@@ -1,13 +1,16 @@
 package com.mohamed.articaledemoapp.ui.main.ui.main.view
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.mohamed.articaledemoapp.R
 import com.mohamed.articaledemoapp.ui.main.ui.main.viewModel.MainViewModel
+import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainFragment : Fragment() {
 
@@ -15,7 +18,7 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var viewModel: MainViewModel
+    private val viewModel : MainViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,7 +29,8 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
+        viewModel.getAllArticles().observe(this, Observer {results ->
+        })
     }
 
 }
