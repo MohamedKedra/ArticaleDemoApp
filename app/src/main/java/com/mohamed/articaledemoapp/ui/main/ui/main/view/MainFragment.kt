@@ -1,4 +1,4 @@
-package com.mohamed.articaledemoapp.ui.main.ui
+package com.mohamed.articaledemoapp.ui.main.ui.main.view
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mohamed.articaledemoapp.R
+import com.mohamed.articaledemoapp.ui.main.ui.main.viewModel.MainViewModel
 
 class MainFragment : Fragment() {
 
@@ -25,7 +26,7 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
     }
 
 }
