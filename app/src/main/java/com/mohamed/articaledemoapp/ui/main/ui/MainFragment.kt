@@ -1,4 +1,4 @@
-package com.mohamed.articaledemoapp.ui.main
+package com.mohamed.articaledemoapp.ui.main.ui
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle

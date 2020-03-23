@@ -2,7 +2,7 @@ package com.mohamed.articaledemoapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.mohamed.articaledemoapp.ui.main.MainFragment
+import com.mohamed.articaledemoapp.ui.main.ui.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
