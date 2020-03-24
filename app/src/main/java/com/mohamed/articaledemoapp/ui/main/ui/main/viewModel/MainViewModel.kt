@@ -17,7 +17,6 @@ class MainViewModel(
     connectivityManager: ConnectivityManager
 ) : BaseViewModel(connectivityManager) {
 
-    private val articlesLiveData: StateLiveData<List<Result>> = StateLiveData()
     private val allArticlesLiveData: StateLiveData<PopularArticlesResponse> = StateLiveData()
 
     fun getAllArticles() : StateLiveData<PopularArticlesResponse>{
@@ -32,33 +31,5 @@ class MainViewModel(
         publishLoading(allArticlesLiveData)
 
         return allArticlesLiveData
-    }
-
-    fun getArticles() :  StateLiveData<List<Result>>{
-
-        articlesLiveData.postLoading()
-
-        mainRepository.getAllArticles().enqueue(object :
-            Callback<PopularArticlesResponse> {
-            override fun onFailure(call: Call<PopularArticlesResponse>, t: Throwable) {
-                articlesLiveData.postError(t)
-            }
-
-            override fun onResponse(
-                call: Call<PopularArticlesResponse>,
-                response: Response<PopularArticlesResponse>
-            ) {
-                if (response.isSuccessful) {
-                    response.body()?.results?.let {
-                        articlesLiveData.postSuccess(it)
-                    }?: run{
-                        articlesLiveData.postNotComplete()
-                    }
-                } else {
-                    articlesLiveData.postNotComplete()
-                }
-            }
-        })
-        return articlesLiveData
     }
 }

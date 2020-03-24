@@ -23,6 +23,15 @@ class MainFragment : BaseFragment(), OnListItemClickListener<Result> {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        observeAndShowArticles()
+        sr_refresh.setOnRefreshListener {
+            observeAndShowArticles()
+        }
+    }
+
+    private fun observeAndShowArticles() {
+        sr_refresh.isRefreshing = true
+
         viewModel.getAllArticles().observe(activity!!, Observer {
             when (it.getStatus()) {
 
@@ -32,6 +41,7 @@ class MainFragment : BaseFragment(), OnListItemClickListener<Result> {
                 }
 
                 StateData.DataStatus.SUCCESS -> {
+                    sr_refresh.isRefreshing = false
                     fl_container.visibility = View.VISIBLE
                     hideLayoutErrorAndLoading()
                     it?.getData()?.let { res ->
@@ -57,7 +67,6 @@ class MainFragment : BaseFragment(), OnListItemClickListener<Result> {
             }
         })
     }
-
 
     override fun onItemClick(view: View, model: Result) {
         val bundle = Bundle()
