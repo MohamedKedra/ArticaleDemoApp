@@ -1,8 +1,13 @@
 package com.mohamed.articaledemoapp.ui.main.data.model
 
 
+import android.annotation.SuppressLint
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@SuppressLint("ParcelCreator")
+@Parcelize
 data class Result(
     @SerializedName("abstract")
     val `abstract`: String,
@@ -13,7 +18,7 @@ data class Result(
     @SerializedName("byline")
     val byline: String,
     @SerializedName("column")
-    val column: Any,
+    val column: String? = null,
     @SerializedName("des_facet")
     val desFacet: List<String>,
     @SerializedName("eta_id")
@@ -29,7 +34,7 @@ data class Result(
     @SerializedName("org_facet")
     val orgFacet: List<String>,
     @SerializedName("per_facet")
-    val perFacet: List<Any>,
+    val perFacet: List<String>? = null,
     @SerializedName("published_date")
     val publishedDate: String,
     @SerializedName("section")
@@ -48,4 +53,4 @@ data class Result(
     val uri: String,
     @SerializedName("url")
     val url: String
-)
+) : Parcelable

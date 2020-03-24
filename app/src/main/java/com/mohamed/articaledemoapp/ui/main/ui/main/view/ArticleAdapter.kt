@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.mohamed.articaledemoapp.R
 import com.mohamed.articaledemoapp.ui.main.data.model.Result
 import com.mohamed.articaledemoapp.ui.main.ui.bases.OnListItemClickListener
@@ -38,6 +39,9 @@ class ArticleAdapter(
             itemView.tv_owner.text = article.byline
             itemView.tv_source.text = article.source
             itemView.tv_date.text = article.publishedDate
+            if(article.media.isNotEmpty()){
+                Glide.with(itemView.context).load(article.media[0].mediaMetadata[0].url).into(itemView.ivImage)
+            }
         }
     }
 }

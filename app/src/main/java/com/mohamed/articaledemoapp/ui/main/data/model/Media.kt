@@ -1,8 +1,13 @@
 package com.mohamed.articaledemoapp.ui.main.data.model
 
 
+import android.annotation.SuppressLint
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@SuppressLint("ParcelCreator")
+@Parcelize
 data class Media(
     @SerializedName("approved_for_syndication")
     val approvedForSyndication: Int,
@@ -16,4 +21,4 @@ data class Media(
     val subtype: String,
     @SerializedName("type")
     val type: String
-)
+) : Parcelable

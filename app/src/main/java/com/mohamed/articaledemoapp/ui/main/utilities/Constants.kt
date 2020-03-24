@@ -8,4 +8,8 @@ class Constants {
         val URL = BASE_URL + API_VERSION
         val API_KEY = "gOrPZwkf3ikvxYVXszvWiwxfCLY4vDso"
     }
+
+    object bundle{
+        val ARTICLE = "article"
+    }
 }
