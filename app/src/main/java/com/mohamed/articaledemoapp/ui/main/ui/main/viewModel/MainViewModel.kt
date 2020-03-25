@@ -17,7 +17,7 @@ class MainViewModel(
     connectivityManager: ConnectivityManager
 ) : BaseViewModel(connectivityManager) {
 
-    private val allArticlesLiveData: StateLiveData<PopularArticlesResponse> = StateLiveData()
+    val allArticlesLiveData: StateLiveData<PopularArticlesResponse> = StateLiveData()
 
     fun getAllArticles() : StateLiveData<PopularArticlesResponse>{
 
